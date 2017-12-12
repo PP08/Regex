@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="tab">
+    <button class="tablinks active" onclick="openCity(event, 'tab1')">Comparison</button>
+    <button class="tablinks" onclick="openCity(event, 'tab2')">Replacing</button>
+    <button class="tablinks" onclick="openCity(event, 'tab3')">About me</button>
+</div>
+
+<div id="tab1" class="tabcontent" style="display: block;">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 bg-input">
+            <input id="input-regex-tab1" type="text" placeholder="Enter your regex here..." oninput="check()">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-3">
+            <button id="btn-add-sample" onclick="addNewLine()">Add new sample</button>
+        </div>
+        <div class="col-3">
+            <button id="btn-remove-sample" onclick="removeLastLine()">Remove the last sample</button>
+        </div>
+    </div>
+
+    <div id="samples">
+
+    </div>
+
+</div>
+
+<div id="tab2" class="tabcontent">
+    <h3>Paris</h3>
+    <p>Paris is the capital of France.</p>
+</div>
+
+<div id="tab3" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<script src="js/tab1.js"></script>
+</body>
+</html>
+
