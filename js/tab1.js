@@ -6,7 +6,6 @@ function addNewLine() {
     var time = d.getTime();
     $area.append('<div id="' + time + '" style="display: none; margin-top: 20px;"></div>');
     var $new = $('#' + time);
-    // area.innerHTML += '<div id="test">'+ input +'<span><button onClick="removeLine(event)">Remove - </button></span></div>';
     $new.append('<div class="row">' +
         '<div class="col-3"></div>' +
         '<div class="col-3"><input class="input-sample-tab1" type="text" oninput="check()" placeholder="Enter your sample here..."></div>' +
@@ -30,7 +29,7 @@ function removeLine(event) {
 function removeLastLine(event) {
     var $target = $("#samples").children().last();
     $target.slideUp("slow", function () {
-        $target.fadeOut(1000)
+        $target.fadeOut(1000);
     });
     setTimeout(function () {
         $target.remove();
@@ -39,31 +38,43 @@ function removeLastLine(event) {
 
 function check() {
     var input = document.getElementById('input-regex-tab1').value;
-    var patt = new RegExp(input);
-    console.log(patt)
-    var samples = document.getElementsByClassName('input-sample-tab1');
-    for (var i = 0; i < samples.length; i++) {
-        var str = (samples[i].value);
-        var state = samples[i].parentNode.parentNode.getElementsByClassName('matching-state')[0];
-        if (str.length > 0 && input.length > 0) {
-            var result = patt.test(str);
-            if (result) {
-                state.style.backgroundColor = "greenyellow";
-            } else {
-                state.style.backgroundColor = "crimson";
-            }
-        }else {
-            state.style.backgroundColor = "grey";
-        }
 
+    if (checkRegExp(input)) {
+        document.getElementById('input-regex-tab1').style.color = "green";
+        // var patt = new RegExp(input);
+        var regex = /\/(.*)\/(.*)$/;
+        var found = input.match(regex);
+		var patt = new RegExp(found[1], found[2]);
+		var samples = document.getElementsByClassName('input-sample-tab1');
+
+        for (var i = 0; i < samples.length; i++) {
+            var str = (samples[i].value);
+            var state = samples[i].parentNode.parentNode.getElementsByClassName('matching-state')[0];
+            if (str.length > 0 && input.length > 0) {
+                var result = patt.test(str);
+                if (result) {
+                    state.style.backgroundColor = "greenyellow";
+                } else {
+                    state.style.backgroundColor = "crimson";
+                }
+            } else {
+                state.style.backgroundColor = "grey";
+            }
+        }
+    }
+    else {
+        document.getElementById('input-regex-tab1').style.color = "red";
+        var states = document.getElementsByClassName('matching-state');
+        for(var j = 0; j < states.length; j++){
+            states[j].style.backgroundColor = "grey";
+        }
     }
 }
-
-// document.getElementById("btn-clear").onclick = function() {clearInput()};
-//
-// function clearInput(){
-//     var input = document.getElementById('input');
-//     if (input.value.length > 0){
-//         input.value = "";
-//     }
-// }
+function checkRegExp(value) {
+    var regex = /^\/.*\/(?:([igmy])(?!\1)){0,4}$/;
+    if (regex.test(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}

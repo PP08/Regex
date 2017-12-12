@@ -92,7 +92,7 @@ div.tab button.active {
     margin-top: 50px;
 }
 
-#input-regex-tab1 {
+#input-regex-tab1, #input-regex-tab2, #input-for-replacing {
     width: 100%;
     height: 40px;
     border-radius: 5px;
@@ -124,4 +124,19 @@ div.tab button.active {
     color: white;
     background-color: crimson;
     font-size: 12pt;
+}
+
+#textarea-tab2, #textarea-result-tab2, #textarea-ref-tab2 {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    font-size: 16pt;
+    font-weight: 400;
+}
+
+.matching-state-tab2 {
+    width: 100%;
+    height: 45px;
+    background-color: grey;
+    border-radius: 5px;
 }

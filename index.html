@@ -35,8 +35,43 @@
 </div>
 
 <div id="tab2" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-3 bg-input">
+            <input id="input-regex-tab2" type="text" placeholder="Enter your regex here..." oninput="check_tab2()">
+        </div>
+        <div class="col-2"></div>
+        <div class="col-3 bg-input">
+            <input id="input-for-replacing" type="text" placeholder="Replacing by..." oninput="check_tab2()">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-4">
+            <textarea id="textarea-tab2" cols="30" rows="10" placeholder="Enter your text here..." oninput="check_tab2()"></textarea>
+        </div>
+        <div class="col-4">
+            <textarea disabled id="textarea-result-tab2" cols="30" rows="10" placeholder="Result after replacing..."></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <textarea name="" id="textarea-ref-tab2" cols="30" rows="10" placeholder="Reference text" oninput="check_tab2()"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5"></div>
+        <div class="col-2 ">
+            <div class="matching-state-tab2">
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="tab3" class="tabcontent">
@@ -61,6 +96,7 @@
     }
 </script>
 <script src="js/tab1.js"></script>
+<script src="js/tab2.js"></script>
 </body>
 </html>
 
