@@ -63,7 +63,7 @@ div.tab button.active {
     /*height: 700px;*/
 }
 
-#btn-add-sample, #btn-remove-sample {
+.btn-add-sample, .btn-remove-sample {
     width: 100%;
     height: 45px;
     border-radius: 5px;
@@ -74,14 +74,15 @@ div.tab button.active {
     font-weight: 300;
 }
 
-#btn-add-sample:hover, #btn-remove-sample:hover {
+.btn-remove-sample {
+    background-color: crimson;
+}
+
+.btn-add-sample:hover, .btn-remove-sample:hover {
     /*color: gray;*/
     background-color: #ffaf27;
 }
 
-#btn-add-sample {
-
-}
 
 .bg-input {
     background-color: #4274ff;
@@ -101,7 +102,7 @@ div.tab button.active {
     font-weight: 300;
 }
 
-.input-sample-tab1 {
+.input-sample-tab1, .input-sample-tab2, .result-sample-tab2, .ref-sample-tab2 {
     width: 100%;
     line-height: 40px;
     border-radius: 5px;

@@ -10,7 +10,7 @@ function addNewLine() {
         '<div class="col-3"></div>' +
         '<div class="col-3"><input class="input-sample-tab1" type="text" oninput="check()" placeholder="Enter your sample here..."></div>' +
         '<div class="col-1"><div class="matching-state"></div></div>' +
-        '<div class="col-2"><button class="btn-remove-sample-tab1" onClick="removeLine(event)">Remove</button></div>' +
+        '<div class="col-2"><button class="btn-remove-sample" onClick="removeLine(event)">Remove</button></div>' +
         '</div>');
     $new.fadeIn(1000);
 
@@ -41,22 +41,21 @@ function check() {
 
     if (checkRegExp(input)) {
         document.getElementById('input-regex-tab1').style.color = "green";
-        // var patt = new RegExp(input);
-        var regex = /\/(.*)\/(.*)$/;
-        var found = input.match(regex);
-		var patt = new RegExp(found[1], found[2]);
-		var samples = document.getElementsByClassName('input-sample-tab1');
-
+        var samples = document.getElementsByClassName('input-sample-tab1');
         for (var i = 0; i < samples.length; i++) {
             var str = (samples[i].value);
             var state = samples[i].parentNode.parentNode.getElementsByClassName('matching-state')[0];
             if (str.length > 0 && input.length > 0) {
+                var regex = /\/(.*)\/(.*)$/;
+                var found = input.match(regex);
+                var patt = new RegExp(found[1], found[2]);
                 var result = patt.test(str);
                 if (result) {
                     state.style.backgroundColor = "greenyellow";
                 } else {
                     state.style.backgroundColor = "crimson";
                 }
+
             } else {
                 state.style.backgroundColor = "grey";
             }
@@ -65,11 +64,12 @@ function check() {
     else {
         document.getElementById('input-regex-tab1').style.color = "red";
         var states = document.getElementsByClassName('matching-state');
-        for(var j = 0; j < states.length; j++){
+        for (var j = 0; j < states.length; j++) {
             states[j].style.backgroundColor = "grey";
         }
     }
 }
+
 function checkRegExp(value) {
     var regex = /^\/.*\/(?:([igmy])(?!\1)){0,4}$/;
     if (regex.test(value)) {
