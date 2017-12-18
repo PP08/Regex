@@ -1,3 +1,37 @@
+function rendDefaultSamples() {
+    var $area = $(document.getElementById('samples'));
+    $.getJSON("/samples/1.json", function (json) {
+
+        var regex = json.regex;
+        var input = document.getElementById('input-regex-tab1');
+        input.value = regex;
+        input.style.color = 'green';
+
+        json.values.forEach(function (sample) {
+            var d = new Date();
+            var time = d.getTime();
+            $area.append('<div id="' + time + '" style="display: none; margin-top: 20px;"></div>');
+            var $new = $('#' + time);
+            var color;
+            if (sample.answer === 1){
+                color = "greenyellow";
+            }else {
+                color = "crimson";
+            }
+
+            $new.append('<div class="row">' +
+                '<div class="col-3"></div>' +
+                '<div class="col-3"><input class="input-sample-tab1" type="text" oninput="check()" placeholder="Enter your sample here..." value="'+ sample.value +'"></div>' +
+                '<div class="col-1"><div class="matching-state" style="background-color: ' + color + '"></div></div>' +
+                '<div class="col-2"><button class="btn-remove-sample" onClick="removeLine(event)">Remove</button></div>' +
+                '</div>');
+            $new.fadeIn(1000);
+        }); // this will show the info it in firebug console
+    });
+}
+
+rendDefaultSamples();
+
 function addNewLine() {
     var $area = $(document.getElementById('samples'));
     // var input = document.getElementById('input').value;
