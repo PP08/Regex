@@ -78,7 +78,7 @@ div.tab button.active {
     background-color: crimson;
 }
 
-.btn-add-sample:hover, .btn-remove-sample, .btn-check-answer:hover {
+.btn-add-sample:hover, .btn-remove-sample:hover, .btn-check-answer:hover {
     /*color: gray;*/
     background-color: #ffaf27;
 }
