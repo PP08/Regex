@@ -7,7 +7,7 @@
 <div class="tab">
     <button class="tablinks active" onclick="openTab(event, 'tab1')">Comparison</button>
     <button class="tablinks" onclick="openTab(event, 'tab2')">Replacing</button>
-    <button class="tablinks" onclick="openTab(event, 'tab3')">About me</button>
+    <button class="tablinks" onclick="openTab(event, 'tab3')">Exercises</button>
 </div>
 
 <div id="tab1" class="tabcontent" style="display: block;">
@@ -63,8 +63,42 @@
 </div>
 
 <div id="tab3" class="tabcontent">
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <select onchange="selectExercise()" id="exercise_select">
+                <option value="exer1">Exercise 1</option>
+                <option value="exer2">Exercise 2</option>
+                <option value="exer3">Exercise 3</option>
+                <option value="exer4">Exercise 4</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="exercises">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <h5>Какая опция в css отвечает за отступ слева?</h5>
+                <input autocomplete="off" type="text" placeholder="Enter your answer here..." id="answer" class="answer">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5"></div>
+            <div class="col-2">
+                <button onclick="check_answer(event)" class="btn-check-answer">Check</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6" id="result">
+
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -85,6 +119,7 @@
 </script>
 <script src="js/tab1.js"></script>
 <script src="js/tab2.js"></script>
+<script src="js/tab3.js"></script>
 </body>
 </html>
 
