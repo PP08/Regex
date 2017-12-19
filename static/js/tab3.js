@@ -1,30 +1,28 @@
-var exercises = {
-    "exer1": {"question": "Какая опция в css отвечает за отступ слева?", "regex": "^\\s*margin-left\\s*$", "answer": "margin-left"},
-    "exer2": {"question": "question2", "regex": "regex_here", "answer": "margin-left"},
-    "exer3": {"question": "question3", "regex": "regex_here", "answer": "margin-left"},
-    "exer4": {"question": "question4", "regex": "regex_here", "answer": "margin-left"}
-};
+var exercises;
+function selectExercise(){
 
-function selectExercise() {
-    var x = document.getElementById("exercise_select").value;
-    document.getElementById("exercises").innerHTML = '<div class="row">\n' +
-        '<div class="col-3"></div>\n' +
-        '<div class="col-6">\n' +
-        '<h5>' + exercises[x].question + '</h5>\n' +
-        '<input autocomplete="off" type="text" placeholder="Enter your answer here..." id="answer" class="answer">\n' +
-        '</div>\n' +
-        '</div>\n' +
-        '<div class="row">\n' +
-        '<div class="col-5"></div>\n' +
-        '<div class="col-2">\n' +
-        '<button onclick="check_answer(event)" class="btn-check-answer">Check</button>\n' +
-        '</div>\n' +
-        '</div><div class="row">\n' +
-        '            <div class="col-3"></div>\n' +
-        '            <div class="col-6" id="result">\n' +
-        '\n' +
-        '            </div>\n' +
-        '        </div>';
+    $.getJSON("/samples/3.json", function (json) {
+        exercises = json;
+        var x = document.getElementById("exercise_select").value;
+        document.getElementById("exercises").innerHTML = '<div class="row">\n' +
+            '<div class="col-3"></div>\n' +
+            '<div class="col-6">\n' +
+            '<h5>' + exercises[x].question + '</h5>\n' +
+            '<input autocomplete="off" type="text" placeholder="Enter your answer here..." id="answer" class="answer">\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '<div class="row">\n' +
+            '<div class="col-5"></div>\n' +
+            '<div class="col-2">\n' +
+            '<button onclick="check_answer(event)" class="btn-check-answer">Check</button>\n' +
+            '</div>\n' +
+            '</div><div class="row">\n' +
+            '            <div class="col-3"></div>\n' +
+            '            <div class="col-6" id="result">\n' +
+            '\n' +
+            '            </div>\n' +
+            '        </div>';
+    });
 }
 
 function check_answer(event) {

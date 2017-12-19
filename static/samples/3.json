@@ -1,0 +1,6 @@
+{
+    "exer1": {"question": "Какая опция в css отвечает за отступ слева?", "regex": "^\\s*margin-left\\s*$", "answer": "margin-left"},
+    "exer2": {"question": "question2", "regex": "regex_here", "answer": "margin-left"},
+    "exer3": {"question": "question3", "regex": "regex_here", "answer": "margin-left"},
+    "exer4": {"question": "question4", "regex": "regex_here", "answer": "margin-left"}
+}
